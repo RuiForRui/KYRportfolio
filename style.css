@@ -1,0 +1,498 @@
+/* 기본 */
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+:root {
+  --accent: #e63946;
+  --dark: #0a0a0a;
+  --dark2: #111;
+  --light: #f0f0f0;
+  --gray: #888;
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: 'Noto Sans KR', 'Segoe UI', sans-serif;
+  background: var(--dark);
+  color: var(--light);
+
+}
+
+/* 네비게이션 */
+nav {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 1000;
+  padding: 1.2rem 2rem;
+  transition: background 0.3s;
+}
+
+nav.scrolled {
+  background: rgba(10,10,10,0.95);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid #222;
+}
+
+.nav-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logo {
+  font-size: 1.1rem;
+  font-weight: 700;
+  letter-spacing: 3px;
+  color: var(--accent);
+}
+
+nav ul { list-style: none; display: flex; gap: 2rem; }
+nav a {
+  text-decoration: none;
+  color: rgba(255,255,255,0.7);
+  font-size: 0.9rem;
+  letter-spacing: 1px;
+  transition: color 0.3s;
+}
+nav a:hover { color: white; }
+
+/* ===== 히어로 ===== */
+.hero {
+  position: relative;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+/* 횡스크롤 영상 띠 */
+.reel-strip {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+}
+
+.reel-track {
+  display: flex;
+  gap: 12px;
+  animation: scroll-reel 30s linear infinite;
+  will-change: transform;
+}
+
+.reel-item {
+  flex-shrink: 0;
+  width: 300px;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 3rem;
+  opacity: 0.4;
+  /* 실제 영상 썸네일로 교체 시: background-image: url('thumb1.jpg'); background-size: cover; */
+}
+
+@keyframes scroll-reel {
+  0%   { transform: translateX(0); }
+  100% { transform: translateX(calc(-312px * 8)); } /* (width + gap) × 원본 아이템 수 */
+}
+
+/* 오버레이 */
+.hero-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to bottom,
+    rgba(0,0,0,0.5) 0%,
+    rgba(0,0,0,0.75) 50%,
+    rgba(0,0,0,0.9) 100%
+  );
+}
+
+/* 히어로 텍스트 */
+.hero-content {
+  position: relative;
+  z-index: 2;
+  text-align: center;
+}
+
+.hero-sub {
+  font-size: 0.85rem;
+  letter-spacing: 6px;
+  color: var(--accent);
+  margin-bottom: 1rem;
+}
+
+.hero-content h1 {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: clamp(4rem, 10vw, 9rem);
+  font-weight: 400;
+  letter-spacing: 8px;
+  line-height: 1;
+  margin-bottom: 1.2rem;
+}
+
+.hero-desc {
+  font-size: 1.1rem;
+  color: rgba(255,255,255,0.6);
+  letter-spacing: 2px;
+  margin-bottom: 2.5rem;
+}
+
+.btn-hero {
+  display: inline-block;
+  padding: 1rem 2.5rem;
+  border: 2px solid var(--accent);
+  color: white;
+  text-decoration: none;
+  font-size: 0.9rem;
+  letter-spacing: 3px;
+  transition: background 0.3s, color 0.3s;
+}
+
+.btn-hero:hover {
+  background: var(--accent);
+}
+
+/* ===== 공통 섹션 ===== */
+.section {
+  padding: 6rem 2rem;
+}
+
+.section.dark {
+  background: var(--dark2);
+}
+
+h2 {
+  text-align: center;
+  font-size: 1.8rem;
+  letter-spacing: 4px;
+  margin-bottom: 3.5rem;
+  position: relative;
+}
+
+h2::after {
+  content: '';
+  display: block;
+  width: 40px;
+  height: 3px;
+  background: var(--accent);
+  margin: 0.6rem auto 0;
+}
+
+/* ===== 쇼릴 ===== */
+.video-wrapper {
+  max-width: 900px;
+  margin: 0 auto;
+  aspect-ratio: 16/9;
+  background: #111;
+  border: 1px solid #222;
+}
+
+.video-wrapper iframe {
+  width: 100%;
+  height: 100%;
+}
+
+/* ===== 작업물 ===== */
+.works-filter {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  margin-bottom: 2.5rem;
+  flex-wrap: wrap;
+}
+
+.filter-btn {
+  padding: 0.5rem 1.5rem;
+  background: transparent;
+  border: 1px solid #333;
+  color: var(--gray);
+  cursor: pointer;
+  font-size: 0.85rem;
+  letter-spacing: 1px;
+  transition: all 0.3s;
+}
+
+.filter-btn.active,
+.filter-btn:hover {
+  border-color: var(--accent);
+  color: white;
+}
+
+.works-grid {
+  max-width: 1100px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 1.5rem;
+}
+
+.work-card {
+  background: #111;
+  overflow: hidden;
+  cursor: pointer;
+  transition: transform 0.3s;
+  text-decoration: none;
+  color: inherit;
+  display: block;
+}
+
+.work-card:hover { transform: scale(1.02); }
+.work-card.hidden { display: none; }
+
+.work-thumb {
+  height: 180px;
+  background: #1a1a2e;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 3rem;
+  position: relative;
+  overflow: hidden;
+  /* 실제 썸네일: background-image: url(...); background-size: cover; */
+}
+
+.work-thumb::after {
+  content: '▶ 보기';
+  position: absolute;
+  inset: 0;
+  background: rgba(230, 57, 70, 0.85);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  transition: opacity 0.3s;
+  font-size: 0.9rem;
+  letter-spacing: 3px;
+  color: white;
+}
+
+.work-card:hover .work-thumb::after { opacity: 1; }
+
+.work-video {
+  padding: 0;
+  position: relative;
+  aspect-ratio: 16/9;
+  height: auto;
+}
+
+.work-video iframe {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.work-video::after { display: none; }
+
+.work-info {
+  padding: 1rem 1.2rem;
+}
+
+.work-info h3 {
+  font-size: 1rem;
+  margin-bottom: 0.3rem;
+}
+
+.work-info p {
+  font-size: 0.8rem;
+  color: var(--gray);
+  margin-bottom: 0.6rem;
+}
+
+.tag {
+  font-size: 0.75rem;
+  padding: 0.2rem 0.7rem;
+  border: 1px solid var(--accent);
+  color: var(--accent);
+  letter-spacing: 1px;
+}
+
+/* ===== 스킬 ===== */
+.skills-container {
+  max-width: 900px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 4rem;
+}
+
+.skill-group h3 {
+  font-size: 0.8rem;
+  letter-spacing: 3px;
+  color: var(--gray);
+  margin-bottom: 1.5rem;
+  text-transform: uppercase;
+}
+
+.skill-row {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+
+.skill-row span {
+  width: 150px;
+  font-size: 0.9rem;
+  flex-shrink: 0;
+}
+
+.bar {
+  flex: 1;
+  height: 4px;
+  background: #222;
+  border-radius: 2px;
+  overflow: hidden;
+}
+
+.fill {
+  height: 100%;
+  background: var(--accent);
+  border-radius: 2px;
+  width: 0 !important;
+  animation: grow 1.5s ease forwards;
+}
+
+@keyframes grow {
+  to { width: var(--w); }
+}
+
+.skill-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.8rem;
+}
+
+.skill-tags span {
+  padding: 0.5rem 1rem;
+  border: 1px solid #333;
+  font-size: 0.85rem;
+  color: var(--gray);
+  letter-spacing: 1px;
+}
+
+/* ===== 소개 ===== */
+.about-grid {
+  max-width: 900px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  gap: 4rem;
+  align-items: center;
+}
+
+.img-placeholder {
+  width: 220px;
+  height: 280px;
+  background: #1a1a1a;
+  border: 1px solid #333;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 3rem;
+}
+
+.about-text h3 {
+  font-size: 1.4rem;
+  margin-bottom: 1.2rem;
+  font-weight: 400;
+}
+
+.about-text em { color: var(--accent); font-style: normal; }
+
+.about-text p {
+  color: var(--gray);
+  line-height: 1.8;
+  margin-bottom: 0.8rem;
+}
+
+.stats {
+  display: flex;
+  gap: 3rem;
+  margin-top: 2rem;
+}
+
+.stat { text-align: center; }
+
+.num {
+  display: block;
+  font-size: 2rem;
+  font-weight: 700;
+  color: var(--accent);
+}
+
+.label {
+  font-size: 0.8rem;
+  color: var(--gray);
+  letter-spacing: 1px;
+}
+
+/* ===== 연락처 ===== */
+.contact-box {
+  text-align: center;
+}
+
+.contact-box p {
+  color: var(--gray);
+  letter-spacing: 2px;
+  margin-bottom: 2rem;
+}
+
+.btn-contact {
+  display: inline-block;
+  padding: 1rem 3rem;
+  background: var(--accent);
+  color: white;
+  text-decoration: none;
+  font-size: 0.9rem;
+  letter-spacing: 2px;
+  transition: opacity 0.3s;
+  margin-bottom: 2rem;
+}
+
+.btn-contact:hover { opacity: 0.8; }
+
+.social-links {
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+}
+
+.social-links a {
+  color: var(--gray);
+  text-decoration: none;
+  font-size: 0.85rem;
+  letter-spacing: 2px;
+  transition: color 0.3s;
+}
+
+.social-links a:hover { color: white; }
+
+/* ===== 푸터 ===== */
+footer {
+  background: #050505;
+  text-align: center;
+  padding: 1.5rem;
+  color: #333;
+  font-size: 0.8rem;
+  letter-spacing: 2px;
+}
+
+
+/* ===== 반응형 ===== */
+@media (max-width: 768px) {
+  .skills-container,
+  .about-grid { grid-template-columns: 1fr; gap: 2rem; }
+
+  .skill-row span { width: 120px; }
+
+  nav ul { gap: 1rem; }
+  nav a { font-size: 0.8rem; }
+}

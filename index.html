@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Video Editor Portfolio</title>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Noto+Sans+KR:wght@300;400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- 네비게이션 -->
+  <nav id="navbar">
+    <div class="nav-inner">
+      <span class="logo">▶ 김영래</span>
+      <ul>
+        <li><a href="#reel">소개영상</a></li>
+        <li><a href="#works">작업물</a></li>
+        <li><a href="#skills">스킬</a></li>
+        <li><a href="#about">소개</a></li>
+        <li><a href="#contact">연락처</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- 히어로 — 횡스크롤 영상 띠 배경 -->
+  <section class="hero">
+    <!-- 횡스크롤 띠 (배경) -->
+    <div class="reel-strip">
+      <div class="reel-track">
+        <!-- 썸네일 16개 (2세트 × 8개 = 무한루프) -->
+        <div class="reel-item" style="background:#1a1a2e">🎬</div>
+        <div class="reel-item" style="background:#16213e">🎥</div>
+        <div class="reel-item" style="background:#0f3460">🎞</div>
+        <div class="reel-item" style="background:#533483">✂️</div>
+        <div class="reel-item" style="background:#1a1a2e">🎬</div>
+        <div class="reel-item" style="background:#2d1b69">🎥</div>
+        <div class="reel-item" style="background:#0f3460">🎞</div>
+        <div class="reel-item" style="background:#1a1a2e">✂️</div>
+        <!-- 복제 세트 (seamless loop) -->
+        <div class="reel-item" style="background:#1a1a2e">🎬</div>
+        <div class="reel-item" style="background:#16213e">🎥</div>
+        <div class="reel-item" style="background:#0f3460">🎞</div>
+        <div class="reel-item" style="background:#533483">✂️</div>
+        <div class="reel-item" style="background:#1a1a2e">🎬</div>
+        <div class="reel-item" style="background:#2d1b69">🎥</div>
+        <div class="reel-item" style="background:#0f3460">🎞</div>
+        <div class="reel-item" style="background:#1a1a2e">✂️</div>
+      </div>
+    </div>
+    <!-- 오버레이 -->
+    <div class="hero-overlay"></div>
+    <!-- 텍스트 -->
+    <div class="hero-content">
+      <p class="hero-sub">VIDEO EDITOR</p>
+      <h1>김 영 래</h1>
+      <p class="hero-desc">영상으로 이야기를 전달합니다</p>
+    </div>
+  </section>
+
+  <!-- 소개영상 섹션 -->
+  <section id="reel" class="section dark">
+    <h2>소개영상</h2>
+    <div class="video-wrapper">
+      <!-- 실제 유튜브/비메오 링크로 교체하세요 -->
+      <iframe
+        src="https://www.youtube.com/embed/dQw4w9WgXcQ"
+        title="Showreel"
+        frameborder="0"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+        allowfullscreen>
+      </iframe>
+    </div>
+  </section>
+
+  <!-- 작업물 섹션 -->
+  <section id="works" class="section">
+    <h2>작업물</h2>
+    <div class="works-filter">
+      <button class="filter-btn active" data-filter="all">전체</button>
+      <button class="filter-btn" data-filter="commercial">광고</button>
+      <button class="filter-btn" data-filter="music">뮤직비디오</button>
+      <button class="filter-btn" data-filter="doc">다큐</button>
+    </div>
+    <div class="works-grid">
+      <a class="work-card" data-cat="commercial" href="https://youtu.be/Um3VOUWLsa8" target="_blank">
+        <div class="work-thumb" style="background-image:url('https://img.youtube.com/vi/Um3VOUWLsa8/hqdefault.jpg'); background-size:cover; background-position:center;"></div>
+        <div class="work-info">
+          <h3>선문대동제 영상</h3>
+          <p>클라이언트: OO브랜드 | 2024</p>
+          <span class="tag">광고</span>
+        </div>
+      </a>
+      <div class="work-card" data-cat="music">
+        <div class="work-thumb">🎵</div>
+        <div class="work-info">
+          <h3>뮤직비디오 편집</h3>
+          <p>아티스트: OO | 2024</p>
+          <span class="tag">뮤직비디오</span>
+        </div>
+      </div>
+      <div class="work-card" data-cat="doc">
+        <div class="work-thumb">📽️</div>
+        <div class="work-info">
+          <h3>단편 다큐멘터리</h3>
+          <p>상영회 수상작 | 2023</p>
+          <span class="tag">다큐</span>
+        </div>
+      </div>
+      <div class="work-card" data-cat="commercial">
+        <div class="work-thumb">📱</div>
+        <div class="work-info">
+          <h3>SNS 숏폼 광고</h3>
+          <p>클라이언트: OO쇼핑 | 2023</p>
+          <span class="tag">광고</span>
+        </div>
+      </div>
+      <div class="work-card" data-cat="music">
+        <div class="work-thumb">🎶</div>
+        <div class="work-info">
+          <h3>라이브 공연 편집</h3>
+          <p>아티스트: OO밴드 | 2023</p>
+          <span class="tag">뮤직비디오</span>
+        </div>
+      </div>
+      <div class="work-card" data-cat="doc">
+        <div class="work-thumb">🌏</div>
+        <div class="work-info">
+          <h3>여행 다큐</h3>
+          <p>개인 프로젝트 | 2023</p>
+          <span class="tag">다큐</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 스킬 섹션 -->
+  <section id="skills" class="section dark">
+    <h2>스킬</h2>
+    <div class="skills-container">
+      <div class="skill-group">
+        <h3>편집 툴</h3>
+        <div class="skill-list">
+          <div class="skill-row">
+            <span>Premiere Pro</span>
+            <div class="bar"><div class="fill" style="--w:95%"></div></div>
+          </div>
+          <div class="skill-row">
+            <span>After Effects</span>
+            <div class="bar"><div class="fill" style="--w:85%"></div></div>
+          </div>
+          <div class="skill-row">
+            <span>DaVinci Resolve</span>
+            <div class="bar"><div class="fill" style="--w:75%"></div></div>
+          </div>
+          <div class="skill-row">
+            <span>Final Cut Pro</span>
+            <div class="bar"><div class="fill" style="--w:60%"></div></div>
+          </div>
+        </div>
+      </div>
+      <div class="skill-group">
+        <h3>전문 분야</h3>
+        <div class="skill-tags">
+          <span>컬러 그레이딩</span>
+          <span>모션 그래픽</span>
+          <span>사운드 디자인</span>
+          <span>VFX 합성</span>
+          <span>숏폼 편집</span>
+          <span>4K / 8K</span>
+          <span>광고 편집</span>
+          <span>유튜브 편집</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 소개 섹션 -->
+  <section id="about" class="section">
+    <h2>소개</h2>
+    <div class="about-grid">
+      <div class="about-img">
+        <div class="img-placeholder">📷</div>
+      </div>
+      <div class="about-text">
+        <h3>안녕하세요, 영상편집자 <em>김영래</em>입니다.</h3>
+        <p>영상 하나로 수많은 이야기를 전할 수 있다고 믿습니다. 광고, 뮤직비디오, 다큐멘터리 등 다양한 장르에서 경험을 쌓아왔습니다.</p>
+        <p>단순한 컷 편집을 넘어, 컬러 그레이딩과 모션 그래픽까지 책임집니다.</p>
+        <div class="stats">
+          <div class="stat"><span class="num">50+</span><span class="label">프로젝트</span></div>
+          <div class="stat"><span class="num">3년+</span><span class="label">경력</span></div>
+          <div class="stat"><span class="num">20+</span><span class="label">클라이언트</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 연락처 섹션 -->
+  <section id="contact" class="section dark">
+    <h2>연락처</h2>
+    <div class="contact-box">
+      <p>프로젝트 의뢰 및 협업 문의 환영합니다</p>
+      <a href="mailto:your@email.com" class="btn-contact">📧 이메일 보내기</a>
+      <div class="social-links">
+        <a href="#">유튜브</a>
+        <a href="#">인스타그램</a>
+        <a href="#">비메오</a>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <p>© 2026 Kim Young Rae. All rights reserved.</p>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
