@@ -8,10 +8,12 @@ function startBackground(){backgroundVideo.play().catch(updateMotion)}
 motionButton.onclick=()=>backgroundVideo.paused?startBackground():backgroundVideo.pause();
 if(!matchMedia('(prefers-reduced-motion: reduce)').matches)startBackground();
 let resumeBackground=false;
-document.getElementById('safety-watch').onclick=()=>{
+function openSafetyFilm(){
  resumeBackground=!backgroundVideo.paused;backgroundVideo.pause();
- detail.innerHTML='<div class="detail-heading"><div><span class="micro">AI / MOTION GRAPHICS / 2026</span><h2 id="detail-title">안녕하냥안녕하쥐</h2><p class="small">인화성가스 안전영상</p></div></div><video class="video" controls playsinline preload="metadata" poster="assets/safety-poster.jpg"><source src="assets/safety-film.mp4" type="video/mp4"></video>';
+ detail.innerHTML='<div class="detail-heading"><div><span class="micro">AI / MOTION GRAPHICS / 2026</span><h2 id="detail-title">고용노동부 AI안전영상</h2><p class="small">안전하냥?안전하쥐! · 인화성가스 안전영상</p></div></div><video class="video" controls playsinline preload="metadata" poster="assets/safety-poster.jpg"><source src="assets/safety-film.mp4" type="video/mp4"></video>';
  modal.showModal();modal.scrollTop=0;document.body.style.overflow='hidden';detail.querySelector('video').play().catch(()=>{});
 };
+document.getElementById('safety-watch').onclick=openSafetyFilm;
+document.addEventListener('click',event=>{if(event.target.closest('[data-safety]'))openSafetyFilm()});
 modal.addEventListener('close',()=>{if(resumeBackground){resumeBackground=false;startBackground()}});
 if('IntersectionObserver'in window&&!matchMedia('(prefers-reduced-motion: reduce)').matches){const observer=new IntersectionObserver(entries=>entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in-view');observer.unobserve(e.target)}}),{threshold:.1});document.querySelectorAll('.center-title,.skills-grid article,.planning-heading,.experience article').forEach(el=>{el.classList.add('reveal');observer.observe(el)})}
