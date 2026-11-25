@@ -6,7 +6,7 @@ function updateMotion(){const playing=!backgroundVideo.paused;motionButton.textC
 backgroundVideo.addEventListener('play',updateMotion);backgroundVideo.addEventListener('pause',updateMotion);
 function startBackground(){backgroundVideo.play().catch(updateMotion)}
 motionButton.onclick=()=>backgroundVideo.paused?startBackground():backgroundVideo.pause();
-if(!matchMedia('(prefers-reduced-motion: reduce)').matches)startBackground();
+updateMotion();
 let resumeBackground=false;
 function openSafetyFilm(){
  resumeBackground=!backgroundVideo.paused;backgroundVideo.pause();
