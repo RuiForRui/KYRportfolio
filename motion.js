@@ -10,7 +10,7 @@ updateMotion();
 let resumeBackground=false;
 function openSafetyFilm(){
  resumeBackground=!backgroundVideo.paused;backgroundVideo.pause();
- detail.innerHTML='<div class="detail-heading"><div><span class="micro">AI / MOTION GRAPHICS / 2026</span><h2 id="detail-title">고용노동부 AI안전영상</h2><p class="small">안전하냥?안전하쥐! · 인화성가스 안전영상</p></div></div><video class="video" controls playsinline preload="metadata" poster="assets/safety-poster.jpg"><source src="assets/safety-film.mp4" type="video/mp4"></video>';
+ detail.innerHTML='<div class="detail-heading"><div><span class="micro">AI / MOTION GRAPHICS / 2026</span><h2 id="detail-title">고용노동부 AI안전영상</h2><p class="small">안전하냥?안전하쥐! · 인화성가스 안전영상</p></div></div><video class="video" controls playsinline preload="metadata" poster="assets/safety-poster.jpg"><source src="assets/safety-film.mp4" type="video/mp4"></video><div class="detail-meta"><div><span class="micro">MY ROLE</span><p>1차 편집</p></div><div><span class="micro">TOOLS</span><p>Premiere Pro · After Effects</p></div></div><p class="detail-copy">고용노동부 AI 안전영상 50편 1차 편집. AI 25종을 가로·세로로 구성했습니다.</p>';
  modal.showModal();modal.scrollTop=0;document.body.style.overflow='hidden';detail.querySelector('video').play().catch(()=>{});
 };
 document.getElementById('safety-watch').onclick=openSafetyFilm;
